@@ -1,14 +1,10 @@
 package com.nathankrebs.library
 
-import androidx.annotation.VisibleForTesting
 import com.nathankrebs.library.extensions.*
 import io.reactivex.FlowableTransformer
 import io.reactivex.MaybeTransformer
 import io.reactivex.ObservableTransformer
 import io.reactivex.SingleTransformer
-import io.reactivex.android.plugins.RxAndroidPlugins
-import io.reactivex.plugins.RxJavaPlugins
-import io.reactivex.schedulers.Schedulers
 
 
 abstract class IObservableScheduler {
@@ -111,21 +107,6 @@ abstract class IObservableScheduler {
 
             override fun <T> scheduleSingle(): SingleTransformer<T, T> =
                 SingleTransformer { it.subscribeIO() }
-        }
-
-        @JvmStatic
-        @VisibleForTesting
-        fun setUpRxJavaPluginsForUnitTests() {
-            RxJavaPlugins.setComputationSchedulerHandler { Schedulers.trampoline() }
-            RxJavaPlugins.setIoSchedulerHandler { Schedulers.trampoline() }
-            RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
-        }
-
-        @JvmStatic
-        @VisibleForTesting
-        fun tearDownRxJavaPlugins() {
-            RxJavaPlugins.reset()
-            RxAndroidPlugins.reset()
         }
     }
 }
