@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId "com.nathankrebs.observableschedulerx"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation rootProject.kotlinJdk
+    implementation rootProject.appCompatAndroidX
+    implementation rootProject.constraintLayout
+
+    testImplementation rootProject.junit
+    androidTestImplementation rootProject.testRunner
+    androidTestImplementation rootProject.espresso
+}
