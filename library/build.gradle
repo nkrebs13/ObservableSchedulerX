@@ -27,10 +27,10 @@ android {
 }
 
 dependencies {
-    implementation rootProject.appCompatAndroidX
-    implementation rootProject.ktx
-    implementation rootProject.rxjava
-    implementation rootProject.rxandroid
+    api rootProject.appCompatAndroidX
+    api rootProject.ktx
+    api rootProject.rxjava
+    api rootProject.rxandroid
 
     testImplementation rootProject.junit
     androidTestImplementation rootProject.testRunner
