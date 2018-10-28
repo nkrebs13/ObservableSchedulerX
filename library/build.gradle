@@ -27,8 +27,6 @@ android {
 }
 
 dependencies {
-    implementation rootProject.supportAppCompat
-    implementation rootProject.ktx
     implementation rootProject.rxjava
     implementation rootProject.rxandroid
 
