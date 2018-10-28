@@ -31,8 +31,9 @@ ext {
 
     kotlinJdk = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    appCompatAndroidX = 'androidx.appcompat:appcompat:1.0.0'
-    ktx = 'androidx.core:core-ktx:1.0.0-alpha1'
+    supportVersion = '27.1.1'
+    supportAppCompat = "com.android.support:appcompat-v7:$supportVersion"
+    ktx = 'androidx.core:core-ktx:0.3'
     rxjava = 'io.reactivex.rxjava2:rxjava:2.2.2'
     rxandroid = 'io.reactivex.rxjava2:rxandroid:2.1.0'
 

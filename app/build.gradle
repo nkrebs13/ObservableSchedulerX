@@ -22,7 +22,7 @@ android {
 
 dependencies {
     implementation rootProject.kotlinJdk
-    implementation rootProject.appCompatAndroidX
+    implementation rootProject.supportAppCompat
     implementation rootProject.constraintLayout
 
     testImplementation rootProject.junit
