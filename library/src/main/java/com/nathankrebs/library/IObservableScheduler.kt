@@ -1,10 +1,7 @@
 package com.nathankrebs.library
 
 import com.nathankrebs.library.extensions.*
-import io.reactivex.FlowableTransformer
-import io.reactivex.MaybeTransformer
-import io.reactivex.ObservableTransformer
-import io.reactivex.SingleTransformer
+import io.reactivex.*
 
 
 abstract class IObservableScheduler {
@@ -16,6 +13,7 @@ abstract class IObservableScheduler {
 
     abstract fun <T> scheduleSingle(): SingleTransformer<T, T>
 
+    abstract fun scheduleCompletable(): CompletableTransformer
 
     companion object {
 
@@ -32,6 +30,9 @@ abstract class IObservableScheduler {
 
             override fun <T> scheduleSingle(): SingleTransformer<T, T> =
                 SingleTransformer { it.subscribeIoObserveMain() }
+
+            override fun scheduleCompletable(): CompletableTransformer =
+                CompletableTransformer { it.subscribeIoObserveMain() }
         }
 
         @JvmStatic
@@ -47,6 +48,9 @@ abstract class IObservableScheduler {
 
             override fun <T> scheduleSingle(): SingleTransformer<T, T> =
                 SingleTransformer { it.subscribeComputationObserveMain() }
+
+            override fun scheduleCompletable(): CompletableTransformer =
+                CompletableTransformer { it.subscribeComputationObserveMain() }
         }
 
         @JvmStatic
@@ -62,6 +66,9 @@ abstract class IObservableScheduler {
 
             override fun <T> scheduleSingle(): SingleTransformer<T, T> =
                 SingleTransformer { it.subscribeIoObserveComputation() }
+
+            override fun scheduleCompletable(): CompletableTransformer =
+                CompletableTransformer { it.subscribeIoObserveComputation() }
         }
 
         @JvmStatic
@@ -77,6 +84,9 @@ abstract class IObservableScheduler {
 
             override fun <T> scheduleSingle(): SingleTransformer<T, T> =
                 SingleTransformer { it.subscribeTrampoline() }
+
+            override fun scheduleCompletable(): CompletableTransformer =
+                CompletableTransformer { it.subscribeTrampoline() }
         }
 
         @JvmStatic
@@ -92,6 +102,9 @@ abstract class IObservableScheduler {
 
             override fun <T> scheduleSingle(): SingleTransformer<T, T> =
                 SingleTransformer { it.subscribeComputation() }
+
+            override fun scheduleCompletable(): CompletableTransformer =
+                CompletableTransformer { it.subscribeComputation() }
         }
 
         @JvmStatic
@@ -107,6 +120,9 @@ abstract class IObservableScheduler {
 
             override fun <T> scheduleSingle(): SingleTransformer<T, T> =
                 SingleTransformer { it.subscribeIO() }
+
+            override fun scheduleCompletable(): CompletableTransformer =
+                CompletableTransformer { it.subscribeIO() }
         }
     }
 }
