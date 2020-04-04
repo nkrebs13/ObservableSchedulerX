@@ -1,8 +1,31 @@
+apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group='com.github.nkrebs13'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.novoda:bintray-release:0.9.2'
+    }
+}
+
+publish {
+
+    def groupProjectID = 'com.github.nkrebs13'
+    def artifactProjectID = 'ObservableSchedulerX'
+    def publishVersionID = '1.10'
+
+    userOrg = ''
+    repoName = 'ObservableSchedulerX'
+    groupId = groupProjectID
+    artifactId = artifactProjectID
+    publishVersion = publishVersionID
+    desc = 'Android library for using extension functions with the `compose` method call in RxJava'
+    website = "https://github.com/nkrebs13/ObservableSchedulerX"
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -11,7 +34,7 @@ android {
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 2
-        versionName "1.09"
+        versionName "1.10"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
