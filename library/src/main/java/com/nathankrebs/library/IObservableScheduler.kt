@@ -1,8 +1,16 @@
 package com.nathankrebs.library
 
-import com.nathankrebs.library.extensions.*
-import io.reactivex.*
-
+import com.nathankrebs.library.extensions.subscribeComputation
+import com.nathankrebs.library.extensions.subscribeComputationObserveMain
+import com.nathankrebs.library.extensions.subscribeIO
+import com.nathankrebs.library.extensions.subscribeIoObserveComputation
+import com.nathankrebs.library.extensions.subscribeIoObserveMain
+import com.nathankrebs.library.extensions.subscribeTrampoline
+import io.reactivex.CompletableTransformer
+import io.reactivex.FlowableTransformer
+import io.reactivex.MaybeTransformer
+import io.reactivex.ObservableTransformer
+import io.reactivex.SingleTransformer
 
 abstract class IObservableScheduler {
     abstract fun <T> schedule(): ObservableTransformer<T, T>
